@@ -9,11 +9,12 @@ def v_x(t):
 # Take the arguments and simply go from the min to the 
 # max given the step specified
 #
-def main(max, min, step) :
+def main(min, max, step) :
     t = min
-    while t < 10 :
+    while t < max :
         velocity = v_x(t)
         print("t = " + str(t) + "v_x = " + str(velocity))
+        t = t + step
     
     return
 
