@@ -18,4 +18,4 @@ def main(max, min, step) :
     return
 
 if __name__ == '__main__':
-    main(int(sys.argv[1], 10), int(sys.argv[2], 10), float(sys.argv[3], 10))
+    main(int(sys.argv[1], 10), int(sys.argv[2], 10), float(sys.argv[3]))
