@@ -1,0 +1,29 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: solver
+  labels:
+    app: solver
+    source: first_try
+spec:
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: python
+          image: python:3.14
+          args: ["python", "-u", "/app/solver.py", "1000", "10000000", "1000"]
+          volumeMounts:
+            - name: script
+              mountPath: /app
+          resources:
+            requests:
+              cpu: 1 # Request one CPU (code is not multi-threaded)
+              memory: 20Mi # Request that this memory be allocated to us
+            limits:
+              cpu: 2 # Throttle the container if using more CPU
+              memory: 100Mi # Terminate the container if using more memory
+      volumes:
+        - name: script
+          configMap:
+            name: solver
